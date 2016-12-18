@@ -2,9 +2,10 @@ package com.mohit.spring.exception;
 
 import java.io.Serializable;
 
-import org.apache.log4j.Logger;
-
+import com.mohit.spring.utils.CommonUtils;
+import com.mohit.spring.utils.LogFactory;
 import com.mohit.spring.utils.SpringConstants;
+import com.mohit.spring.utils.SpringLogger;
 
 public class SpringExceptionHandler implements Serializable {
 
@@ -15,7 +16,7 @@ public class SpringExceptionHandler implements Serializable {
 	/**
 	 * Instance of BSMLogger
 	 */
-	private static final Logger LOGGER = Logger.getLogger(SpringExceptionHandler.class);
+	private static final SpringLogger LOGGER = LogFactory.getLogger(SpringExceptionHandler.class);
 
 	/**
 	 * Handles the exception that is passed as an argument to this method.
@@ -32,7 +33,7 @@ public class SpringExceptionHandler implements Serializable {
 			throw throwable;
 		} catch (SpringException SpringException) {
 			excep = SpringException;
-			WebCommonUtil.setExceptionMessage(excep);
+			CommonUtils.setExceptionMessage(excep);
 			if (SpringException.getSeverity().equalsIgnoreCase(SpringConstants.SEVERITY_ERROR)) {
 				LOGGER.logError(METHOD_NAME, SpringException.getExceptionMessage());
 				logException(excep);
@@ -47,7 +48,7 @@ public class SpringExceptionHandler implements Serializable {
 
 			excep = new SpringException(SpringConstants.GENERIC, METHOD_NAME, bre, null,
 					SpringConstants.SEVERITY_ERROR);
-			WebCommonUtil.setExceptionMessage(excep);
+			CommonUtils.setExceptionMessage(excep);
 			logException(excep);
 		}
 		LOGGER.logInfo(METHOD_NAME, "Exit");

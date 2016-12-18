@@ -15,13 +15,12 @@ public class PropertyReader {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		messageResourceBundle = (ResourceBundleMessageSource) context.getBean("messageSource");
 	}
-	
-	public String getProperty(String key, String[] args) throws Exception {
-	    if (key == null) {
-	      throw new Exception("illegal argument");
-	    }
 
+	public static String getProperty(String key, String[] args) throws Exception {
+		if (key == null) {
+			throw new Exception("illegal argument");
+		}
 		return (String) messageResourceBundle.getMessage(key, args, locale);
-	  }
+	}
 
 }

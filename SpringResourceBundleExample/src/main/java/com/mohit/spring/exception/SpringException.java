@@ -22,7 +22,7 @@ public class SpringException extends RuntimeException {
 	/**
 	 * Message Parameters
 	 */
-	private Object[] messageParameters;
+	private String[] messageParameters;
 
 	/**
 	 * Name of the component where exception occured
@@ -66,7 +66,7 @@ public class SpringException extends RuntimeException {
 	 * @param Object[]
 	 *            arrParameters Parameters to be passed to error message
 	 */
-	public SpringException(String exceptionCode, String componentName, Object[] arrParameters,
+	public SpringException(String exceptionCode, String componentName, String[] arrParameters,
 			String exceptionSeverity) {
 		this.exceptionCode = exceptionCode;
 		this.componentName = componentName;
@@ -86,7 +86,7 @@ public class SpringException extends RuntimeException {
 	 * @param Object[]
 	 *            arrParameters Parameters to be passed to error message
 	 */
-	public SpringException(String exceptionCode, String componentName, Throwable t, Object[] arrParameters,
+	public SpringException(String exceptionCode, String componentName, Throwable t, String[] arrParameters,
 			String exceptionSeverity) {
 		this(exceptionCode, componentName, arrParameters, exceptionSeverity);
 		initCause(t);
@@ -145,16 +145,8 @@ public class SpringException extends RuntimeException {
 	/**
 	 * @return the messageParameters
 	 */
-	public Object[] getMessageParameters() {
+	public String[] getMessageParameters() {
 		return messageParameters;
-	}
-
-	/**
-	 * @param messageParameters
-	 *            the messageParameters to set
-	 */
-	public void setMessageParameters(Object[] messageParameters) {
-		this.messageParameters = messageParameters;
 	}
 
 	/**
