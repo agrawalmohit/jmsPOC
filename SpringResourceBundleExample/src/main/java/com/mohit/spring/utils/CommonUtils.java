@@ -8,7 +8,7 @@ import com.mohit.spring.exception.SpringException;
 public class CommonUtils {
 
 	public static SpringLogger LOGGER = LogFactory.getLogger(CommonUtils.class);
-
+	
 	public static SpringException setExceptionMessage(SpringException exception) {
 		final String METHOD_NAME = "setExceptionMessage";
 		LOGGER.logInfo(METHOD_NAME, "Enter");

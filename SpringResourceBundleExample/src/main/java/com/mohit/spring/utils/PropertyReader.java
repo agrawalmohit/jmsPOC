@@ -17,6 +17,9 @@ public class PropertyReader {
 	}
 
 	public static String getProperty(String key, String[] args) throws Exception {
+		if (null == messageResourceBundle) {
+			loadResources();
+		}
 		if (key == null) {
 			throw new Exception("illegal argument");
 		}
